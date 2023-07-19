@@ -10,13 +10,13 @@ struct MainView: View {
     var body: some View {
 		TabView(selection: $viewModel.tabIndex) {
 			Group {
-				coordinator.getView(for: .transactions)
-				coordinator.getView(for: .feed)
-				coordinator.getView(for: .shopping)
-				coordinator.getView(for: .settings)
+				ForEach(MainScreenTabViewItem.allCases) { item in
+					coordinator.getView(for: item)
+				}
 			}
 			.modifier(TabBarModifier())
 		}
+		.accentColor(.appWhite)
     }
 }
 

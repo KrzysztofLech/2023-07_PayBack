@@ -3,8 +3,12 @@
 
 import SwiftUI
 
-enum MainScreenTabViewItem: Int {
+enum MainScreenTabViewItem: Int, CaseIterable, Identifiable {
 	case transactions, feed, shopping, settings
+
+	var id: Int {
+		self.rawValue
+	}
 
 	@ViewBuilder
 	var tabItem: some View {
