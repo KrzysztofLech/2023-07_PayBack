@@ -19,7 +19,6 @@ struct NavigationBarModifier: ViewModifier {
 			.toolbar(.visible, for: .navigationBar)
 			.toolbarBackground(.visible, for: .navigationBar)
 			.toolbarBackground(backgroundColor, for: .navigationBar)
-			.toolbarColorScheme(.dark, for: .navigationBar)
 
 			.navigationBarTitleDisplayMode(.inline)
 	}

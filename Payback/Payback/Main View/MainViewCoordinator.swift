@@ -24,8 +24,8 @@ final class MainViewCoordinator: ObservableObject {
 				.modifier(
 					NavigationBarModifier(
 						title: "World of PAYBACK",
-						titleColor: .orange,
-						backgroundColor: .black
+						titleColor: .appWhite,
+						backgroundColor: .appPrimary
 					)
 				)
 			}
@@ -56,8 +56,8 @@ final class MainViewCoordinator: ObservableObject {
 			.modifier(
 				NavigationBarModifier(
 					title: item.title,
-					titleColor: .orange,
-					backgroundColor: .black
+					titleColor: .appWhite,
+					backgroundColor: .appPrimary
 				)
 			)
 	}

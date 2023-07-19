@@ -13,6 +13,7 @@ struct PaybackApp: App {
 				dataService: dataService
 			)
 			RootView(coordinator: rootCoordinator)
+				.preferredColorScheme(.light)
 		}
     }
 }
