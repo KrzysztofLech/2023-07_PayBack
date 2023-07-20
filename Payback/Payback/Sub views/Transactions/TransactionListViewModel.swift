@@ -12,7 +12,12 @@ final class TransactionListViewModel: ObservableObject {
 		self.dataService = dataService
 	}
 
-	@Published var transactions: [TransactionViewModel] = []
+	@Published private var transactions: [TransactionViewModel] = []
+
+	var sortedTransactions: [TransactionViewModel] {
+		transactions
+			.sorted { $0.transaction.transactionDetail.bookingDate > $1.transaction.transactionDetail.bookingDate }
+	}
 
 	func getData() {
 		// Commented to refresh data on every appear

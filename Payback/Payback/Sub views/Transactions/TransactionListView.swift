@@ -13,8 +13,8 @@ struct TransactionListView: View {
 				Color.white
 
 				ScrollView(.vertical, showsIndicators: true) {
-					LazyVStack(alignment: .leading, spacing: 0) {
-						ForEach(viewModel.transactions) { transaction in
+					LazyVStack(spacing: 0) {
+						ForEach(viewModel.sortedTransactions) { transaction in
 							coordinator.getTransactionView(forTransaction: transaction)
 						}
 					}.padding(.bottom, 16)
