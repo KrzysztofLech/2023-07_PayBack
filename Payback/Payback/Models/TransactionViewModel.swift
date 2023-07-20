@@ -3,16 +3,8 @@
 
 import Foundation
 
-struct TransactionViewModel: Hashable {
+struct TransactionViewModel {
 	let transaction: Transaction
-
-	static func == (lhs: TransactionViewModel, rhs: TransactionViewModel) -> Bool {
-		lhs.transaction.alias.reference == rhs.transaction.alias.reference
-	}
-
-	func hash(into hasher: inout Hasher) {
-		hasher.combine(transaction.alias.reference)
-	}
 
 	var date: String {
 		let date = transaction.transactionDetail.bookingDate
@@ -35,6 +27,22 @@ struct TransactionViewModel: Hashable {
 
 	var valueCurrency: String {
 		transaction.transactionDetail.value.currency
+	}
+}
+
+extension TransactionViewModel: Identifiable {
+	var id: String {
+		transaction.alias.reference
+	}
+}
+
+extension TransactionViewModel: Hashable {
+	static func == (lhs: TransactionViewModel, rhs: TransactionViewModel) -> Bool {
+		lhs.transaction.alias.reference == rhs.transaction.alias.reference
+	}
+
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(transaction.alias.reference)
 	}
 }
 

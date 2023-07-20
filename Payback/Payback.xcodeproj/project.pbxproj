@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6B3B8A052A693B92004BFF5B /* TransactionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3B8A042A693B92004BFF5B /* TransactionDetailsView.swift */; };
+		6B3B8A072A6949D8004BFF5B /* TransactionListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3B8A062A6949D8004BFF5B /* TransactionListCoordinator.swift */; };
 		6BF07DD82A67CB17000ECCAE /* PaybackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07DD72A67CB17000ECCAE /* PaybackApp.swift */; };
 		6BF07DDC2A67CB1A000ECCAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BF07DDB2A67CB1A000ECCAE /* Assets.xcassets */; };
 		6BF07DDF2A67CB1A000ECCAE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BF07DDE2A67CB1A000ECCAE /* Preview Assets.xcassets */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		6B3B8A042A693B92004BFF5B /* TransactionDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsView.swift; sourceTree = "<group>"; };
+		6B3B8A062A6949D8004BFF5B /* TransactionListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListCoordinator.swift; sourceTree = "<group>"; };
 		6BF07DD42A67CB17000ECCAE /* Payback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Payback.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BF07DD72A67CB17000ECCAE /* PaybackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaybackApp.swift; sourceTree = "<group>"; };
 		6BF07DDB2A67CB1A000ECCAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 		6BF07E0F2A67D1ED000ECCAE /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
+				6B3B8A062A6949D8004BFF5B /* TransactionListCoordinator.swift */,
 				6BF07E102A67D1ED000ECCAE /* TransactionListViewModel.swift */,
 				6BF07E112A67D1ED000ECCAE /* TransactionListView.swift */,
 				6BF07E252A690A23000ECCAE /* TransactionView.swift */,
@@ -322,6 +325,7 @@
 			files = (
 				6B3B8A052A693B92004BFF5B /* TransactionDetailsView.swift in Sources */,
 				6BF07E182A67D1ED000ECCAE /* TransactionListViewModel.swift in Sources */,
+				6B3B8A072A6949D8004BFF5B /* TransactionListCoordinator.swift in Sources */,
 				6BF07DEC2A67CF21000ECCAE /* TabBarModifier.swift in Sources */,
 				6BF07E0A2A67D181000ECCAE /* MainScreenTabViewItem.swift in Sources */,
 				6BF07DF62A67CF8F000ECCAE /* CoverView.swift in Sources */,

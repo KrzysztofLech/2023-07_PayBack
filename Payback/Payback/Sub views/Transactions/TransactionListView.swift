@@ -4,18 +4,32 @@
 import SwiftUI
 
 struct TransactionListView: View {
+	@StateObject var coordinator: TransactionListCoordinator
 	@StateObject var viewModel: TransactionListViewModel
 
 	var body: some View {
-		ZStack {
-			Color.white.ignoresSafeArea()
+		NavigationStack(path: $coordinator.path) {
+			ZStack {
+				Color.white
 
-			List(viewModel.transactions, id: \.self) { transaction in
-				TransactionView(transaction: transaction)
-					.listRowSeparator(.hidden)
-					.listRowBackground(Color.clear)
+				ScrollView(.vertical, showsIndicators: true) {
+					LazyVStack(alignment: .leading, spacing: 0) {
+						ForEach(viewModel.transactions) { transaction in
+							coordinator.getTransactionView(forTransaction: transaction)
+						}
+					}.padding(.bottom, 16)
+				}
 			}
-			.listStyle(.plain)
+			.modifier(
+				NavigationBarModifier(
+					title: "World of PAYBACK",
+					titleColor: .appWhite,
+					backgroundColor: .appPrimary
+				)
+			)
+			.navigationDestination(for: TransactionViewModel.self) { transaction in
+				coordinator.getTransactionDetailsView(forTransaction: transaction)
+			}
 		}
 		.onAppear {
 			viewModel.getData()
@@ -25,6 +39,7 @@ struct TransactionListView: View {
 
 #Preview {
 	TransactionListView(
+		coordinator: TransactionListCoordinator(),
 		viewModel: TransactionListViewModel(dataService: DataService())
 	)
 }

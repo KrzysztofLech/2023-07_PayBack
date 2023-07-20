@@ -1,10 +1,12 @@
 //  TransactionView.swift
 //  Created by Krzysztof Lech on 20/07/2023.
 
+import Combine
 import SwiftUI
 
 struct TransactionView: View {
 	let transaction: TransactionViewModel
+	let didSelect = PassthroughSubject<TransactionViewModel, Never>()
 
 	var body: some View {
 		ZStack(alignment: .leading) {
@@ -34,12 +36,10 @@ struct TransactionView: View {
 				RoundedRectangle(cornerRadius: 4)
 					.fill(Color.appBackground)
 			}
-
-			NavigationLink(
-				value: transaction,
-				label: { EmptyView() }
-			)
-			.opacity(0.0)
+		}
+		.padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
+		.onTapGesture {
+			didSelect.send(transaction)
 		}
 	}
 }

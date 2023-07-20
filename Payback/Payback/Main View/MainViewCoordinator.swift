@@ -15,20 +15,12 @@ final class MainViewCoordinator: ObservableObject {
 	func getView(for item: MainScreenTabViewItem) -> some View {
 		switch item {
 		case .transactions:
+			let coordinator = TransactionListCoordinator()
 			let viewModel = TransactionListViewModel(dataService: rootCoordinator.dataService)
-			NavigationStack {
-				TransactionListView(viewModel: viewModel)
-				.navigationDestination(for: TransactionViewModel.self) { transaction in
-					self.getDetailsView(forTransaction: transaction)
-				}
-				.modifier(
-					NavigationBarModifier(
-						title: "World of PAYBACK",
-						titleColor: .appWhite,
-						backgroundColor: .appPrimary
-					)
-				)
-			}
+			TransactionListView(
+				coordinator: coordinator,
+				viewModel: viewModel
+			)
 			.tabItem { item.tabItem }
 			.tag(item.rawValue)
 
@@ -48,17 +40,5 @@ final class MainViewCoordinator: ObservableObject {
 				.tabItem { item.tabItem }
 				.tag(item.rawValue)
 		}
-	}
-
-	@ViewBuilder
-	private func getDetailsView(forTransaction transaction: TransactionViewModel) -> some View {
-		TransactionDetailsView(transaction: transaction)
-			.modifier(
-				NavigationBarModifier(
-					title: "Transaction details",
-					titleColor: .appWhite,
-					backgroundColor: .appPrimary
-				)
-			)
 	}
 }
