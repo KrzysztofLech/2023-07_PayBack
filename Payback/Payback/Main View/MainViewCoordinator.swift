@@ -18,7 +18,7 @@ final class MainViewCoordinator: ObservableObject {
 			let viewModel = TransactionsViewModel(dataService: rootCoordinator.dataService)
 			NavigationStack {
 				TransactionsView(viewModel: viewModel)
-				.navigationDestination(for: TransactionsItem.self) { item in
+				.navigationDestination(for: Transaction.self) { item in
 					self.getSubview(for: item)
 				}
 				.modifier(
@@ -51,11 +51,11 @@ final class MainViewCoordinator: ObservableObject {
 	}
 
 	@ViewBuilder
-	private func getSubview(for item: TransactionsItem) -> some View {
-		Text(item.title)
+	private func getSubview(for item: Transaction) -> some View {
+		Text(item.partnerDisplayName)
 			.modifier(
 				NavigationBarModifier(
-					title: item.title,
+					title: item.partnerDisplayName,
 					titleColor: .appWhite,
 					backgroundColor: .appPrimary
 				)

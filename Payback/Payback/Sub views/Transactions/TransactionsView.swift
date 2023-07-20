@@ -10,11 +10,11 @@ struct TransactionsView: View {
 		ZStack {
 			Color.white.ignoresSafeArea()
 
-			List(viewModel.listItems, id: \.self) { item in
+			List(viewModel.transactions, id: \.self) { transaction in
 				NavigationLink(
-					value: item,
+					value: transaction,
 					label: {
-						Text(item.title)
+						Text(transaction.partnerDisplayName)
 					}
 				)
 			}

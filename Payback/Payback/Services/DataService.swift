@@ -5,12 +5,16 @@ import Combine
 import Foundation
 
 enum DataServiceError: Error {
-	case unknown
+	case serverError(statusCode: Int?)
+	case noDataReceived
+	case decodingError(DecodingError)
+	case unknownError(Error)
 
 	var title: String {
 		switch self {
-		case .unknown:
+		case .unknownError:
 			return "Unknown error!"
+		default: return ""
 		}
 	}
 }
@@ -18,15 +22,29 @@ enum DataServiceError: Error {
 final class DataService: ObservableObject {
 	@Published var isInProgress = false
 	@Published var error: DataServiceError?
-		
-	func getTransactions() -> AnyPublisher<[TransactionsItem], Never> {
+
+	private let session: URLSession
+
+	init(session: URLSession = .shared) {
+		self.session = session
+	}
+
+	func getDataFromDemoFile() -> AnyPublisher<Transactions, Error> {
+		let path = Bundle.main.path(forResource: "PBTransactions", ofType: "json")!
+		let url = URL(fileURLWithPath: path)
+
+		let decoder = JSONDecoder()
+		decoder.dateDecodingStrategy = .iso8601
+
 		isInProgress = true
-		return Just(())
+		return self.session
+			.dataTaskPublisher(for: url)
 			.delay(for: 1, scheduler: RunLoop.main)
-			.map {
+			.tryMap { data, response in
 				self.isInProgress = false
-				return TransactionsItem.demoData
+				return data
 			}
+			.decode(type: Transactions.self, decoder: decoder)
 			.eraseToAnyPublisher()
 	}
 }

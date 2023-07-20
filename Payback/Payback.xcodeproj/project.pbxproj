@@ -17,7 +17,7 @@
 		6BF07DF82A67CF8F000ECCAE /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07DF42A67CF8F000ECCAE /* AlertView.swift */; };
 		6BF07DF92A67CF8F000ECCAE /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07DF52A67CF8F000ECCAE /* LoaderView.swift */; };
 		6BF07DFC2A67CFEF000ECCAE /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07DFA2A67CFEF000ECCAE /* DataService.swift */; };
-		6BF07DFF2A67D08F000ECCAE /* TransactionsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07DFE2A67D08F000ECCAE /* TransactionsItem.swift */; };
+		6BF07DFF2A67D08F000ECCAE /* Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07DFE2A67D08F000ECCAE /* Transactions.swift */; };
 		6BF07E032A67D10F000ECCAE /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E012A67D10E000ECCAE /* RootCoordinator.swift */; };
 		6BF07E042A67D10F000ECCAE /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E022A67D10F000ECCAE /* RootView.swift */; };
 		6BF07E0A2A67D181000ECCAE /* MainScreenTabViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E062A67D181000ECCAE /* MainScreenTabViewItem.swift */; };
@@ -30,6 +30,7 @@
 		6BF07E1B2A67D1EE000ECCAE /* ShoppingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E152A67D1ED000ECCAE /* ShoppingView.swift */; };
 		6BF07E1C2A67D1EE000ECCAE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E172A67D1ED000ECCAE /* SettingsView.swift */; };
 		6BF07E1E2A67F551000ECCAE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BF07E1D2A67F551000ECCAE /* Colors.xcassets */; };
+		6BF07E202A6819D1000ECCAE /* PBTransactions.json in Resources */ = {isa = PBXBuildFile; fileRef = 6BF07E1F2A6819D1000ECCAE /* PBTransactions.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +45,7 @@
 		6BF07DF42A67CF8F000ECCAE /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		6BF07DF52A67CF8F000ECCAE /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		6BF07DFA2A67CFEF000ECCAE /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
-		6BF07DFE2A67D08F000ECCAE /* TransactionsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsItem.swift; sourceTree = "<group>"; };
+		6BF07DFE2A67D08F000ECCAE /* Transactions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transactions.swift; sourceTree = "<group>"; };
 		6BF07E012A67D10E000ECCAE /* RootCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		6BF07E022A67D10F000ECCAE /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		6BF07E062A67D181000ECCAE /* MainScreenTabViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenTabViewItem.swift; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 		6BF07E152A67D1ED000ECCAE /* ShoppingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingView.swift; sourceTree = "<group>"; };
 		6BF07E172A67D1ED000ECCAE /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		6BF07E1D2A67F551000ECCAE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		6BF07E1F2A6819D1000ECCAE /* PBTransactions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PBTransactions.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			children = (
 				6BF07DDB2A67CB1A000ECCAE /* Assets.xcassets */,
 				6BF07E1D2A67F551000ECCAE /* Colors.xcassets */,
+				6BF07E1F2A6819D1000ECCAE /* PBTransactions.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -149,7 +152,7 @@
 		6BF07DEF2A67CF5F000ECCAE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6BF07DFE2A67D08F000ECCAE /* TransactionsItem.swift */,
+				6BF07DFE2A67D08F000ECCAE /* Transactions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			files = (
 				6BF07E1E2A67F551000ECCAE /* Colors.xcassets in Resources */,
 				6BF07DDF2A67CB1A000ECCAE /* Preview Assets.xcassets in Resources */,
+				6BF07E202A6819D1000ECCAE /* PBTransactions.json in Resources */,
 				6BF07DDC2A67CB1A000ECCAE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,7 +322,7 @@
 				6BF07DF82A67CF8F000ECCAE /* AlertView.swift in Sources */,
 				6BF07DD82A67CB17000ECCAE /* PaybackApp.swift in Sources */,
 				6BF07E1B2A67D1EE000ECCAE /* ShoppingView.swift in Sources */,
-				6BF07DFF2A67D08F000ECCAE /* TransactionsItem.swift in Sources */,
+				6BF07DFF2A67D08F000ECCAE /* Transactions.swift in Sources */,
 				6BF07E1C2A67D1EE000ECCAE /* SettingsView.swift in Sources */,
 				6BF07E192A67D1ED000ECCAE /* TransactionsView.swift in Sources */,
 				6BF07E0C2A67D181000ECCAE /* MainView.swift in Sources */,

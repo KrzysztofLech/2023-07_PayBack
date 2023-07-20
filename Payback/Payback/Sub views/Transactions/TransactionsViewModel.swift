@@ -12,15 +12,20 @@ final class TransactionsViewModel: ObservableObject {
 		self.dataService = dataService
 	}
 
-	@Published var listItems: [TransactionsItem] = []
+	@Published var transactions: [Transaction] = []
 
 	func getData() {
-		guard listItems.isEmpty else { return }
-		
-		dataService?.getTransactions()
-			.sink { data in
-				self.listItems = data
-			}
+		// Commented to refresh data on every appear
+		guard transactions.isEmpty else { return }
+
+		dataService?.getDataFromDemoFile()
+			.sink(
+				receiveCompletion: {_ in},
+				receiveValue: { value in
+					print(value)
+					self.transactions = value.items
+				}
+			)
 			.store(in: &cancellables)
 	}
 }
