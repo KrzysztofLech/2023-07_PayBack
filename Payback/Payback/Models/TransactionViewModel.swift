@@ -25,8 +25,8 @@ struct TransactionViewModel: Hashable {
 		transaction.partnerDisplayName
 	}
 
-	var description: String {
-		transaction.transactionDetail.description ?? ""
+	var description: String? {
+		transaction.transactionDetail.description
 	}
 
 	var valueAmount: Int {

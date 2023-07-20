@@ -13,7 +13,9 @@ struct TransactionView: View {
 					Text(transaction.partner).font(.system(size: 12, weight: .regular))
 					Spacer(minLength: 0)
 				}
-				Text("transaction.description").font(.system(size: 9, weight: .thin))
+				if let description = transaction.description {
+					Text(description).font(.system(size: 9, weight: .thin))
+				}
 
 				Color.black.opacity(0.2)
 					.frame(height: 1)

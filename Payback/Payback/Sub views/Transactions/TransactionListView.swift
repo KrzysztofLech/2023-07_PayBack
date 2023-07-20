@@ -13,6 +13,7 @@ struct TransactionListView: View {
 			List(viewModel.transactions, id: \.self) { transaction in
 				TransactionView(transaction: transaction)
 					.listRowSeparator(.hidden)
+					.listRowBackground(Color.clear)
 			}
 			.listStyle(.plain)
 		}
