@@ -24,13 +24,15 @@
 		6BF07E0B2A67D181000ECCAE /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E072A67D181000ECCAE /* MainViewModel.swift */; };
 		6BF07E0C2A67D181000ECCAE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E082A67D181000ECCAE /* MainView.swift */; };
 		6BF07E0D2A67D181000ECCAE /* MainViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E092A67D181000ECCAE /* MainViewCoordinator.swift */; };
-		6BF07E182A67D1ED000ECCAE /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E102A67D1ED000ECCAE /* TransactionsViewModel.swift */; };
-		6BF07E192A67D1ED000ECCAE /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E112A67D1ED000ECCAE /* TransactionsView.swift */; };
+		6BF07E182A67D1ED000ECCAE /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E102A67D1ED000ECCAE /* TransactionListViewModel.swift */; };
+		6BF07E192A67D1ED000ECCAE /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E112A67D1ED000ECCAE /* TransactionListView.swift */; };
 		6BF07E1A2A67D1EE000ECCAE /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E132A67D1ED000ECCAE /* FeedView.swift */; };
 		6BF07E1B2A67D1EE000ECCAE /* ShoppingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E152A67D1ED000ECCAE /* ShoppingView.swift */; };
 		6BF07E1C2A67D1EE000ECCAE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E172A67D1ED000ECCAE /* SettingsView.swift */; };
 		6BF07E1E2A67F551000ECCAE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BF07E1D2A67F551000ECCAE /* Colors.xcassets */; };
 		6BF07E202A6819D1000ECCAE /* PBTransactions.json in Resources */ = {isa = PBXBuildFile; fileRef = 6BF07E1F2A6819D1000ECCAE /* PBTransactions.json */; };
+		6BF07E222A6907F5000ECCAE /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E212A6907F5000ECCAE /* TransactionViewModel.swift */; };
+		6BF07E262A690A23000ECCAE /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF07E252A690A23000ECCAE /* TransactionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,13 +54,15 @@
 		6BF07E072A67D181000ECCAE /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		6BF07E082A67D181000ECCAE /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		6BF07E092A67D181000ECCAE /* MainViewCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewCoordinator.swift; sourceTree = "<group>"; };
-		6BF07E102A67D1ED000ECCAE /* TransactionsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
-		6BF07E112A67D1ED000ECCAE /* TransactionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
+		6BF07E102A67D1ED000ECCAE /* TransactionListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
+		6BF07E112A67D1ED000ECCAE /* TransactionListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
 		6BF07E132A67D1ED000ECCAE /* FeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		6BF07E152A67D1ED000ECCAE /* ShoppingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingView.swift; sourceTree = "<group>"; };
 		6BF07E172A67D1ED000ECCAE /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		6BF07E1D2A67F551000ECCAE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		6BF07E1F2A6819D1000ECCAE /* PBTransactions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PBTransactions.json; sourceTree = "<group>"; };
+		6BF07E212A6907F5000ECCAE /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
+		6BF07E252A690A23000ECCAE /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				6BF07DFE2A67D08F000ECCAE /* Transactions.swift */,
+				6BF07E212A6907F5000ECCAE /* TransactionViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,8 +214,9 @@
 		6BF07E0F2A67D1ED000ECCAE /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
-				6BF07E102A67D1ED000ECCAE /* TransactionsViewModel.swift */,
-				6BF07E112A67D1ED000ECCAE /* TransactionsView.swift */,
+				6BF07E102A67D1ED000ECCAE /* TransactionListViewModel.swift */,
+				6BF07E112A67D1ED000ECCAE /* TransactionListView.swift */,
+				6BF07E252A690A23000ECCAE /* TransactionView.swift */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -311,11 +317,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BF07E182A67D1ED000ECCAE /* TransactionsViewModel.swift in Sources */,
+				6BF07E182A67D1ED000ECCAE /* TransactionListViewModel.swift in Sources */,
 				6BF07DEC2A67CF21000ECCAE /* TabBarModifier.swift in Sources */,
 				6BF07E0A2A67D181000ECCAE /* MainScreenTabViewItem.swift in Sources */,
 				6BF07DF62A67CF8F000ECCAE /* CoverView.swift in Sources */,
 				6BF07E0D2A67D181000ECCAE /* MainViewCoordinator.swift in Sources */,
+				6BF07E262A690A23000ECCAE /* TransactionView.swift in Sources */,
 				6BF07E1A2A67D1EE000ECCAE /* FeedView.swift in Sources */,
 				6BF07DED2A67CF21000ECCAE /* NavigationBarModifier.swift in Sources */,
 				6BF07E042A67D10F000ECCAE /* RootView.swift in Sources */,
@@ -324,13 +331,14 @@
 				6BF07E1B2A67D1EE000ECCAE /* ShoppingView.swift in Sources */,
 				6BF07DFF2A67D08F000ECCAE /* Transactions.swift in Sources */,
 				6BF07E1C2A67D1EE000ECCAE /* SettingsView.swift in Sources */,
-				6BF07E192A67D1ED000ECCAE /* TransactionsView.swift in Sources */,
+				6BF07E192A67D1ED000ECCAE /* TransactionListView.swift in Sources */,
 				6BF07E0C2A67D181000ECCAE /* MainView.swift in Sources */,
 				6BF07DEE2A67CF21000ECCAE /* View+extensions.swift in Sources */,
 				6BF07E032A67D10F000ECCAE /* RootCoordinator.swift in Sources */,
 				6BF07DF92A67CF8F000ECCAE /* LoaderView.swift in Sources */,
 				6BF07DFC2A67CFEF000ECCAE /* DataService.swift in Sources */,
 				6BF07E0B2A67D181000ECCAE /* MainViewModel.swift in Sources */,
+				6BF07E222A6907F5000ECCAE /* TransactionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

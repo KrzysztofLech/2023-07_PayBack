@@ -15,10 +15,10 @@ final class MainViewCoordinator: ObservableObject {
 	func getView(for item: MainScreenTabViewItem) -> some View {
 		switch item {
 		case .transactions:
-			let viewModel = TransactionsViewModel(dataService: rootCoordinator.dataService)
+			let viewModel = TransactionListViewModel(dataService: rootCoordinator.dataService)
 			NavigationStack {
-				TransactionsView(viewModel: viewModel)
-				.navigationDestination(for: Transaction.self) { item in
+				TransactionListView(viewModel: viewModel)
+				.navigationDestination(for: TransactionViewModel.self) { item in
 					self.getSubview(for: item)
 				}
 				.modifier(
@@ -51,11 +51,11 @@ final class MainViewCoordinator: ObservableObject {
 	}
 
 	@ViewBuilder
-	private func getSubview(for item: Transaction) -> some View {
-		Text(item.partnerDisplayName)
+	private func getSubview(for item: TransactionViewModel) -> some View {
+		Text(item.partner)
 			.modifier(
 				NavigationBarModifier(
-					title: item.partnerDisplayName,
+					title: item.partner,
 					titleColor: .appWhite,
 					backgroundColor: .appPrimary
 				)

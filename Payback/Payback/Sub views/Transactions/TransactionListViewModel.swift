@@ -1,10 +1,10 @@
-//  TransactionsViewModel.swift
+//  TransactionListViewModel.swift
 //  Created by Krzysztof Lech on 19/07/2023.
 
 import Combine
 import Foundation
 
-final class TransactionsViewModel: ObservableObject {
+final class TransactionListViewModel: ObservableObject {
 	private let dataService: DataService?
 	private var cancellables = Set<AnyCancellable>()
 
@@ -12,7 +12,7 @@ final class TransactionsViewModel: ObservableObject {
 		self.dataService = dataService
 	}
 
-	@Published var transactions: [Transaction] = []
+	@Published var transactions: [TransactionViewModel] = []
 
 	func getData() {
 		// Commented to refresh data on every appear
@@ -22,8 +22,8 @@ final class TransactionsViewModel: ObservableObject {
 			.sink(
 				receiveCompletion: {_ in},
 				receiveValue: { value in
-					print(value)
-					self.transactions = value.items
+					let data = value.items.map { TransactionViewModel(transaction: $0) }
+					self.transactions = data
 				}
 			)
 			.store(in: &cancellables)
