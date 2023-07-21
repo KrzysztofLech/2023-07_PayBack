@@ -19,9 +19,19 @@ enum DataServiceError: Error {
 	}
 }
 
-final class DataService: ObservableObject {
-	@Published var isInProgress = false
-	@Published var error: DataServiceError?
+protocol DataServiceProtocol {
+	var isInProgressPublisher: Published<Bool>.Publisher { get }
+	var errorPublisher: Published<DataServiceError?>.Publisher { get }
+
+	func getDataFromDemoFile() -> AnyPublisher<Transactions, Error>
+}
+
+final class DataService: DataServiceProtocol {
+	@Published private var isInProgress = false
+	var isInProgressPublisher: Published<Bool>.Publisher { $isInProgress }
+
+	@Published private var error: DataServiceError?
+	var errorPublisher: Published<DataServiceError?>.Publisher { $error }
 
 	private let session: URLSession
 

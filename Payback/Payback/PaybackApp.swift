@@ -5,7 +5,7 @@ import SwiftUI
 
 @main
 struct PaybackApp: App {
-	let dataService = DataService()
+	let dataService: DataServiceProtocol = DataService()
 
     var body: some Scene {
 		WindowGroup {

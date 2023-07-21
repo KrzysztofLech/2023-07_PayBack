@@ -7,10 +7,10 @@ import SwiftUI
 final class TransactionListViewModel: ObservableObject {
 	typealias CategoryTransactions = (category: Int, transactions: [TransactionViewModel])
 
-	private let dataService: DataService?
+	private let dataService: DataServiceProtocol?
 	private var cancellables = Set<AnyCancellable>()
 
-	init(dataService: DataService? = nil) {
+	init(dataService: DataServiceProtocol? = nil) {
 		self.dataService = dataService
 	}
 

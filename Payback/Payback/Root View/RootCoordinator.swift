@@ -26,9 +26,9 @@ final class RootCoordinator: ObservableObject {
 	@Published var modalViewItem: ModalViewItem?
 
 	private var cancellables = Set<AnyCancellable>()
-	let dataService: DataService
+	let dataService: DataServiceProtocol
 
-	init(dataService: DataService = DataService()) {
+	init(dataService: DataServiceProtocol = DataService()) {
 		self.dataService = dataService
 
 		connectWithDataService()
@@ -43,13 +43,13 @@ final class RootCoordinator: ObservableObject {
 	}
 
 	private func connectWithDataService() {
-		dataService.$isInProgress
+		dataService.isInProgressPublisher
 			.sink { isInProgress in
 				self.fullScreenItem = isInProgress ? .loader : nil
 			}
 			.store(in: &cancellables)
 
-		dataService.$error
+		dataService.errorPublisher
 			.sink { error in
 				if let error {
 					self.fullScreenItem = .alert(error.title)
