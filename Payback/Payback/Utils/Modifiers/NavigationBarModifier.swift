@@ -46,7 +46,8 @@ struct NavigationBarModifier: ViewModifier {
 				}
 
 				ToolbarItem(placement: .principal) {
-					Text(title).foregroundStyle(titleColor)
+					Text(title)
+						.foregroundStyle(titleColor)
 				}
 			}
 

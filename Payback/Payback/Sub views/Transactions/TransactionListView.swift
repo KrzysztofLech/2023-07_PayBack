@@ -12,20 +12,32 @@ struct TransactionListView: View {
 			ZStack {
 				Color.white
 
-				ScrollView(.vertical, showsIndicators: true) {
-					if viewModel.dividedByCategory {
-						transactionListDividedByCategory
-					} else {
-						transactionList
+				VStack(alignment: .center, spacing: 0) {
+					// Filter
+					if viewModel.isFilteringOn {
+						FilterView(
+							categories: viewModel.allCategories,
+							selectedCategory: $viewModel.selectedCategory
+						)
 					}
-				}
+
+					// List
+					ScrollView(.vertical, showsIndicators: true) {
+						if viewModel.isFilteringOn {
+							transactionListDividedByCategory
+						} else {
+							transactionList
+						}
+					}
+				}.animation(.easeIn, value: viewModel.isFilteringOn)
 			}
 			.modifier(
 				NavigationBarModifier(
 					title: "World of PAYBACK",
 					titleColor: .appWhite,
 					backgroundColor: .appPrimary,
-					leadingButton: viewModel.leadingButton
+					leadingButton: viewModel.leadingButton,
+					trailingButton: viewModel.trailingButton
 				)
 			)
 			.navigationDestination(for: TransactionViewModel.self) { transaction in

@@ -14,15 +14,30 @@ final class TransactionListViewModel: ObservableObject {
 		self.dataService = dataService
 	}
 
-	@Published var dividedByCategory = false
+	@Published var isFilteringOn = false
+	@Published var selectedCategory: Int? = nil
 
 	// MARK: - Navigation bar buttons
 
 	lazy var leadingButton = NavigationBarButton(
-		buttonIcon: "arrow.up.arrow.down.square.fill",
+		buttonIcon: "arrow.triangle.2.circlepath.circle",
 		buttonColor: .appWhite,
 		buttonAction: {
-			self.dividedByCategory.toggle()
+			self.transactions.removeAll()
+			self.isFilteringOn = false
+			self.selectedCategory = nil
+			self.getData()
+		}
+	)
+
+	lazy var trailingButton = NavigationBarButton(
+		buttonIcon: "line.3.horizontal.decrease.circle.fill",
+		buttonColor: .appWhite,
+		buttonAction: {
+			self.isFilteringOn.toggle()
+			if !self.isFilteringOn {
+				self.selectedCategory = nil
+			}
 		}
 	)
 
@@ -37,16 +52,24 @@ final class TransactionListViewModel: ObservableObject {
 
 	private var categoriesTransactions: [CategoryTransactions] {
 		var array: [CategoryTransactions] = []
-		categories.forEach { category in
+		allCategories.forEach { category in
 			let transactions = sortedTransactions.filter { $0.transaction.category == category }
 			array.append((category, transactions))
 		}
 		return array
 	}
 
-	var categories: [Int] {
+	var allCategories: [Int] {
 		let categoriesSet = Set<Int>(sortedTransactions.map { $0.transaction.category })
 		return Array<Int>(categoriesSet).sorted(by: <)
+	}
+
+	var categories: [Int] {
+		if let selectedCategory {
+			return allCategories.filter { $0 == selectedCategory }
+		} else {
+			return allCategories
+		}
 	}
 
 	func getTransactions(forCategory category: Int) -> [TransactionViewModel] {
@@ -55,8 +78,7 @@ final class TransactionListViewModel: ObservableObject {
 	}
 
 	func getData() {
-		// Commented to refresh data on every appear
-		// guard transactions.isEmpty else { return }
+		guard transactions.isEmpty else { return }
 
 		dataService?.getDataFromDemoFile()
 			.sink(
