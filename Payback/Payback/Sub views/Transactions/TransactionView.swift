@@ -37,7 +37,7 @@ struct TransactionView: View {
 					.fill(Color.appBackground)
 			}
 		}
-		.padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
+		.padding(.horizontal, 16)
 		.onTapGesture {
 			didSelect.send(transaction)
 		}
