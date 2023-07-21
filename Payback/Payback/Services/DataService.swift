@@ -29,8 +29,12 @@ enum DataServiceError: Error {
 protocol DataServiceProtocol {
 	var isInProgress: Bool { get }
 	var isInProgressPublisher: Published<Bool>.Publisher { get }
+
 	var error: DataServiceError? { get }
 	var errorPublisher: Published<DataServiceError?>.Publisher { get }
+
+	var isConnected: Bool { get }
+	var isConnectedPublisher: Published<Bool>.Publisher { get }
 
 	func getDataFromDemoFile(completion: @escaping (Transactions) -> Void)
 }
@@ -42,13 +46,16 @@ final class DataService: DataServiceProtocol {
 	@Published private(set) var error: DataServiceError?
 	var errorPublisher: Published<DataServiceError?>.Publisher { $error }
 
-	private let networkMonitor = NWPathMonitor()
-	private var isConnected = true
+	@Published private(set) var isConnected = true
+	var isConnectedPublisher: Published<Bool>.Publisher { $isConnected }
 
 	private let session: URLSession
+	private let networkMonitor: NWPathMonitor
 
-	init(session: URLSession = .shared) {
+	init(session: URLSession = .shared, networkMonitor: NWPathMonitor = NWPathMonitor()) {
 		self.session = session
+		self.networkMonitor = networkMonitor
+
 		startNetworkMonitoring()
 	}
 

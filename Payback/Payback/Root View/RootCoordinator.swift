@@ -56,6 +56,14 @@ final class RootCoordinator: ObservableObject {
 				}
 			}
 			.store(in: &cancellables)
+
+		dataService.isConnectedPublisher
+			.sink { isConnected in
+				if !isConnected {
+					self.fullScreenItem = .alert("No Internet!")
+				}
+			}
+			.store(in: &cancellables)
 	}
 
 	// MARK: - Primary views: cover, mainScreen ...
