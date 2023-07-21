@@ -67,8 +67,13 @@ struct TransactionListView: View {
 	private func getCategoryHeader(category: Int) -> some View {
 		HStack(spacing: 2) {
 			Text("Category:")
-			Text(String(category)).fontWeight(.bold)
+			Text(String(category))
+				.fontWeight(.bold)
 			Spacer()
+			Text("Total Value:")
+			let totalValueData = viewModel.getTotalValue(forCategory: category)
+			Text(totalValueData.value, format: .currency(code: totalValueData.currency))
+				.fontWeight(.bold)
 		}
 		.padding(16)
 		.background(Color.white)

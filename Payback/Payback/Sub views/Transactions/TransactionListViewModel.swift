@@ -90,4 +90,13 @@ final class TransactionListViewModel: ObservableObject {
 			)
 			.store(in: &cancellables)
 	}
+
+	func getTotalValue(forCategory category: Int) -> (value: Int, currency: String) {
+		let categoryTransactions = getTransactions(forCategory: category)
+		let totalValue = categoryTransactions
+			.map { $0.valueAmount }
+			.reduce(0,+)
+		let currency = categoryTransactions.first?.valueCurrency ?? ""
+		return (totalValue, currency)
+	}
 }
