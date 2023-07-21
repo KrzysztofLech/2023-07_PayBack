@@ -3,43 +3,81 @@
 
 import Combine
 import Foundation
+import Network
 
 enum DataServiceError: Error {
 	case serverError(statusCode: Int?)
 	case noDataReceived
-	case decodingError(DecodingError)
+	case decodingError
 	case unknownError(Error)
+	case noInternet
 
 	var title: String {
 		switch self {
+		case .noInternet:
+			return "No Internet!"
 		case .unknownError:
 			return "Unknown error!"
-		default: return ""
+		case .decodingError:
+			return "Decoding problem!"
+		default:
+			return self.localizedDescription
 		}
 	}
 }
 
 protocol DataServiceProtocol {
+	var isInProgress: Bool { get }
 	var isInProgressPublisher: Published<Bool>.Publisher { get }
+	var error: DataServiceError? { get }
 	var errorPublisher: Published<DataServiceError?>.Publisher { get }
 
-	func getDataFromDemoFile() -> AnyPublisher<Transactions, Error>
+	func getDataFromDemoFile(completion: @escaping (Transactions?) -> Void)
 }
 
 final class DataService: DataServiceProtocol {
-	@Published private var isInProgress = false
+	@Published private(set) var isInProgress = false
 	var isInProgressPublisher: Published<Bool>.Publisher { $isInProgress }
 
-	@Published private var error: DataServiceError?
+	@Published private(set) var error: DataServiceError?
 	var errorPublisher: Published<DataServiceError?>.Publisher { $error }
+
+	private let networkMonitor = NWPathMonitor()
+	private var isConnected = true
 
 	private let session: URLSession
 
 	init(session: URLSession = .shared) {
 		self.session = session
+		startNetworkMonitoring()
 	}
 
-	func getDataFromDemoFile() -> AnyPublisher<Transactions, Error> {
+	deinit {
+		stopNetworkMonitoring()
+	}
+
+	// MARK: - Network Reachability
+
+	private func startNetworkMonitoring() {
+		networkMonitor.start(queue: .global())
+		networkMonitor.pathUpdateHandler = { [weak self] path in
+			self?.isConnected = path.status == .satisfied
+		}
+	}
+
+	private func stopNetworkMonitoring() {
+		networkMonitor.cancel()
+	}
+
+	// MARK: - Data requests
+
+	func getDataFromDemoFile(completion: @escaping (Transactions?) -> Void) {
+		guard isConnected else {
+			error = .noInternet
+			completion(nil)
+			return
+		}
+
 		let path = Bundle.main.path(forResource: "PBTransactions", ofType: "json")!
 		let url = URL(fileURLWithPath: path)
 
@@ -47,14 +85,22 @@ final class DataService: DataServiceProtocol {
 		decoder.dateDecodingStrategy = .iso8601
 
 		isInProgress = true
-		return self.session
-			.dataTaskPublisher(for: url)
-			.delay(for: 1, scheduler: RunLoop.main)
-			.tryMap { data, response in
-				self.isInProgress = false
-				return data
-			}
-			.decode(type: Transactions.self, decoder: decoder)
-			.eraseToAnyPublisher()
+
+		guard let data = try? Data(contentsOf: url) else {
+			error = .noDataReceived
+			completion(nil)
+			return
+		}
+
+		guard let transactions = try? decoder.decode(Transactions.self, from: data) else {
+			self.error = .decodingError
+			completion(nil)
+			return
+		}
+
+		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+			self.isInProgress = false
+			completion(transactions)
+		}
 	}
 }

@@ -1,14 +1,12 @@
 //  TransactionListViewModel.swift
 //  Created by Krzysztof Lech on 19/07/2023.
 
-import Combine
 import SwiftUI
 
 final class TransactionListViewModel: ObservableObject {
 	typealias CategoryTransactions = (category: Int, transactions: [TransactionViewModel])
 
 	private let dataService: DataServiceProtocol?
-	private var cancellables = Set<AnyCancellable>()
 
 	init(dataService: DataServiceProtocol? = nil) {
 		self.dataService = dataService
@@ -80,15 +78,11 @@ final class TransactionListViewModel: ObservableObject {
 	func getData() {
 		guard transactions.isEmpty else { return }
 
-		dataService?.getDataFromDemoFile()
-			.sink(
-				receiveCompletion: {_ in},
-				receiveValue: { value in
-					let data = value.items.map { TransactionViewModel(transaction: $0) }
-					self.transactions = data
-				}
-			)
-			.store(in: &cancellables)
+		dataService?.getDataFromDemoFile { [weak self] transactions in
+			if let transactions {
+				self?.transactions = transactions.items.map { TransactionViewModel(transaction: $0) }
+			}
+		}
 	}
 
 	func getTotalValue(forCategory category: Int) -> (value: Int, currency: String) {
