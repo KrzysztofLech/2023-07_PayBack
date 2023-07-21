@@ -79,9 +79,7 @@ final class TransactionListViewModel: ObservableObject {
 		guard transactions.isEmpty else { return }
 
 		dataService?.getDataFromDemoFile { [weak self] transactions in
-			if let transactions {
-				self?.transactions = transactions.items.map { TransactionViewModel(transaction: $0) }
-			}
+			self?.transactions = transactions.items.map { TransactionViewModel(transaction: $0) }
 		}
 	}
 

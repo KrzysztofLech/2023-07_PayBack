@@ -9,17 +9,17 @@ enum DataServiceError: Error {
 	case serverError(statusCode: Int?)
 	case noDataReceived
 	case decodingError
-	case unknownError(Error)
 	case noInternet
+	case random
 
 	var title: String {
 		switch self {
 		case .noInternet:
 			return "No Internet!"
-		case .unknownError:
-			return "Unknown error!"
 		case .decodingError:
 			return "Decoding problem!"
+		case .random:
+			return "Demo RANDOM error!\nTry again"
 		default:
 			return self.localizedDescription
 		}
@@ -32,7 +32,7 @@ protocol DataServiceProtocol {
 	var error: DataServiceError? { get }
 	var errorPublisher: Published<DataServiceError?>.Publisher { get }
 
-	func getDataFromDemoFile(completion: @escaping (Transactions?) -> Void)
+	func getDataFromDemoFile(completion: @escaping (Transactions) -> Void)
 }
 
 final class DataService: DataServiceProtocol {
@@ -71,10 +71,15 @@ final class DataService: DataServiceProtocol {
 
 	// MARK: - Data requests
 
-	func getDataFromDemoFile(completion: @escaping (Transactions?) -> Void) {
+	func getDataFromDemoFile(completion: @escaping (Transactions) -> Void) {
 		guard isConnected else {
 			error = .noInternet
-			completion(nil)
+			return
+		}
+
+		// Random error
+		guard Bool.random() else {
+			error = .random
 			return
 		}
 
@@ -88,13 +93,11 @@ final class DataService: DataServiceProtocol {
 
 		guard let data = try? Data(contentsOf: url) else {
 			error = .noDataReceived
-			completion(nil)
 			return
 		}
 
 		guard let transactions = try? decoder.decode(Transactions.self, from: data) else {
 			self.error = .decodingError
-			completion(nil)
 			return
 		}
 

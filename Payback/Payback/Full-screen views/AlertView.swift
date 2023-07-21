@@ -13,6 +13,7 @@ struct AlertView: View {
 
 			VStack(alignment: .center) {
 				Text(text)
+					.multilineTextAlignment(.center)
 					.font(.system(size: 18))
 					.foregroundStyle(.white)
 					.padding(32)
