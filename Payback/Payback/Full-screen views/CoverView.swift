@@ -8,8 +8,11 @@ struct CoverView: View {
 
     var body: some View {
 		ZStack {
-			Color.yellow.ignoresSafeArea()
-			Text("COVER")
+			Color.appWhite.ignoresSafeArea()
+			Image(.logo)
+				.resizable()
+				.aspectRatio(contentMode: .fit)
+				.padding(.horizontal, 64)
 		}
 		.onAppear(delay: 1) {
 			didFinishAction?()
