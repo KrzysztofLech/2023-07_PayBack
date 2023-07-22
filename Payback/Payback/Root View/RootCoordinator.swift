@@ -120,7 +120,7 @@ final class RootCoordinator: ObservableObject {
 	func getView(for item: ModalViewItem) -> some View {
 		switch item {
 		case .test:
-			Text(AppStrings.FullScreen.modalTest)
+			Text(AppStrings.Modals.modalTest)
 		}
 	}
 }

@@ -8,7 +8,7 @@ struct FeedView: View {
         ZStack {
             Color.green.ignoresSafeArea()
 
-            Text("Feed")
+			Text(AppStrings.Feed.title)
                 .font(.headline)
         }
     }

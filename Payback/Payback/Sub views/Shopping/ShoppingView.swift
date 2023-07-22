@@ -8,7 +8,7 @@ struct ShoppingView: View {
         ZStack {
             Color.pink.ignoresSafeArea()
 
-            Text("Shopping")
+			Text(AppStrings.Shopping.title)
                 .font(.headline)
         }
     }

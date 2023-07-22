@@ -15,25 +15,25 @@ enum MainScreenTabViewItem: Int, CaseIterable, Identifiable {
 		switch self {
 		case .transactions:
 			Label(
-				AppStrings.MainScreen.TabItem.transactions,
+				AppStrings.TabItem.transactions,
 				systemImage: "list.bullet"
 			)
 
 		case .feed:
 			Label(
-				AppStrings.MainScreen.TabItem.feed,
+				AppStrings.TabItem.feed,
 				systemImage: "globe"
 			)
 
 		case .shopping:
 			Label(
-				AppStrings.MainScreen.TabItem.shopping,
+				AppStrings.TabItem.shopping,
 				systemImage: "cart.fill"
 			)
 
 		case .settings:
 			Label(
-				AppStrings.MainScreen.TabItem.settings,
+				AppStrings.TabItem.settings,
 				systemImage: "gearshape.fill"
 			)
 		}

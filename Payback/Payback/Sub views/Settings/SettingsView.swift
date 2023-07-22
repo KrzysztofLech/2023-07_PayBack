@@ -9,7 +9,7 @@ struct SettingsView: View {
         ZStack {
             Color.teal.ignoresSafeArea()
 
-            Text("Settings")
+			Text(AppStrings.Settings.title)
                 .font(.headline)
         }
     }

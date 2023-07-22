@@ -5,36 +5,53 @@ import Foundation
 
 enum AppStrings {
 	enum Alerts {
-		static let noInternet = "No Internet!"
-		static let decodingProblem = "Decoding problem!"
-		static let demo = "Demo RANDOM error!\nTry again"
+		static let decodingProblem = "alert_decodingProblem".localized
+		static let demo = "alert_demo".localized
+		static let noInternet = "alert_noInternet".localized
+
 	}
 
-	enum FullScreen {
-		static let modalTest = "Modal test"
+	enum Modals {
+		static let modalTest = "modal_test".localized
 	}
 
-	enum MainScreen {
-		enum TabItem {
-			static let transactions = "Transactions"
-			static let feed = "Feed"
-			static let shopping = "Shopping"
-			static let settings = "Settings"
-		}
+	enum TabItem {
+		static let transactions = "tabItem_transactions".localized
+		static let feed = "tabItem_feed".localized
+		static let shopping = "tabItem_shopping".localized
+		static let settings = "tabItem_settings".localized
 	}
 
 	enum Transactions {
-		static let title = "World of PAYBACK"
-		static let noData = "No transactions"
-		static let category = "Category:"
-		static let totalValue = "Total Value:"
-		static let filterCategory = "Category %d"
+		static let title = "transactions_title".localized
+		static let noData = "transactions_noData".localized
+		static let category = "transactions_category".localized
+		static let totalValue = "transactions_totalValue".localized
+		static let filterCategory = "transactions_filter_Category".localized
 	}
 
 	enum TransactionDetails {
-		static let title = "Transaction details"
-		static let partner = "Partner:"
-		static let description = "Description:"
-		static let noDescription = "-"
+		static let title = "transactionDetails_title".localized
+		static let partner = "transactionDetails_Partner".localized
+		static let description = "transactionDetails_description".localized
+		static let noDescription = "transactionDetails_noDescription".localized
+	}
+
+	enum Feed {
+		static let title = "feed_title".localized
+	}
+
+	enum Shopping {
+		static let title = "shopping_title".localized
+	}
+
+	enum Settings {
+		static let title = "settings_title".localized
+	}
+}
+
+extension String {
+	var localized: String {
+		return NSLocalizedString(self, comment: "")
 	}
 }
