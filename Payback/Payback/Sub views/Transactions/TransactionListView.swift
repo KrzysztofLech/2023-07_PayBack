@@ -12,6 +12,12 @@ struct TransactionListView: View {
 			ZStack {
 				Color.white
 
+				// No transactions placeholder
+				if viewModel.sortedTransactions.isEmpty {
+					noDataPlaceholder
+				}
+
+				// Transaction list
 				VStack(alignment: .center, spacing: 0) {
 					// Filter
 					if viewModel.isFilteringOn {
@@ -21,7 +27,7 @@ struct TransactionListView: View {
 						)
 					}
 
-					// List
+					// Lists
 					ScrollView(.vertical, showsIndicators: true) {
 						if viewModel.isFilteringOn {
 							transactionListDividedByCategory
@@ -46,6 +52,23 @@ struct TransactionListView: View {
 		}
 		.onAppear {
 			viewModel.getData()
+		}
+	}
+
+	@ViewBuilder
+	var noDataPlaceholder: some View {
+		VStack(spacing: 0) {
+			Spacer()
+			Image(.logo)
+				.resizable()
+				.aspectRatio(contentMode: .fit)
+				.frame(width: 180)
+			Text(AppStrings.Transactions.noData)
+				.font(.system(size: 18, weight: .medium))
+				.foregroundStyle(Color.appPrimary)
+			Spacer()
+			Spacer()
+			Spacer()
 		}
 	}
 

@@ -25,6 +25,7 @@ enum AppStrings {
 
 	enum Transactions {
 		static let title = "World of PAYBACK"
+		static let noData = "No transactions"
 		static let category = "Category:"
 		static let totalValue = "Total Value:"
 		static let filterCategory = "Category %d"
