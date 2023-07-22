@@ -14,13 +14,28 @@ enum MainScreenTabViewItem: Int, CaseIterable, Identifiable {
 	var tabItem: some View {
 		switch self {
 		case .transactions:
-			Label("Transactions", systemImage: "list.bullet")
+			Label(
+				AppStrings.MainScreen.TabItem.transactions,
+				systemImage: "list.bullet"
+			)
+
 		case .feed:
-			Label("Feed", systemImage: "globe")
+			Label(
+				AppStrings.MainScreen.TabItem.feed,
+				systemImage: "globe"
+			)
+
 		case .shopping:
-			Label("Shopping", systemImage: "cart.fill")
+			Label(
+				AppStrings.MainScreen.TabItem.shopping,
+				systemImage: "cart.fill"
+			)
+
 		case .settings:
-			Label("Settings", systemImage: "gearshape.fill")
+			Label(
+				AppStrings.MainScreen.TabItem.settings,
+				systemImage: "gearshape.fill"
+			)
 		}
 	}
 }

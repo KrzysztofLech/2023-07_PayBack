@@ -60,7 +60,7 @@ final class RootCoordinator: ObservableObject {
 		dataService.isConnectedPublisher
 			.sink { isConnected in
 				if !isConnected {
-					self.fullScreenItem = .alert("No Internet!")
+					self.fullScreenItem = .alert(AppStrings.Alerts.noInternet)
 				}
 			}
 			.store(in: &cancellables)
@@ -118,7 +118,7 @@ final class RootCoordinator: ObservableObject {
 	func getView(for item: ModalViewItem) -> some View {
 		switch item {
 		case .test:
-			Text("Modal test")
+			Text(AppStrings.FullScreen.modalTest)
 		}
 	}
 }

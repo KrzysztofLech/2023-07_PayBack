@@ -33,7 +33,7 @@ struct TransactionListView: View {
 			}
 			.modifier(
 				NavigationBarModifier(
-					title: "World of PAYBACK",
+					title: AppStrings.Transactions.title,
 					titleColor: .appWhite,
 					backgroundColor: .appPrimary,
 					leadingButton: viewModel.leadingButton,
@@ -66,11 +66,11 @@ struct TransactionListView: View {
 	@ViewBuilder
 	private func getCategoryHeader(category: Int) -> some View {
 		HStack(spacing: 2) {
-			Text("Category:")
+			Text(AppStrings.Transactions.category)
 			Text(String(category))
 				.fontWeight(.bold)
 			Spacer()
-			Text("Total Value:")
+			Text(AppStrings.Transactions.totalValue)
 			let totalValueData = viewModel.getTotalValue(forCategory: category)
 			Text(totalValueData.value, format: .currency(code: totalValueData.currency))
 				.fontWeight(.bold)

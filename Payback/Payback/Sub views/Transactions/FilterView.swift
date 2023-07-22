@@ -23,7 +23,7 @@ struct FilterView: View {
 								}
 							},
 							label: {
-								Text("Category \(category)")
+								Text(String(format: AppStrings.Transactions.filterCategory, category))
 									.padding(8)
 									.foregroundStyle(Color.appPrimary)
 									.background(

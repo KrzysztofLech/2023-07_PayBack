@@ -24,7 +24,7 @@ struct TransactionDetailsView: View {
 
 	private var partnerInfo: some View {
 		HStack(alignment: .firstTextBaseline, spacing: 8) {
-			Text("Partner:")
+			Text(AppStrings.TransactionDetails.partner)
 				.font(.system(size: 12, weight: .light))
 			Text(transaction.partner)
 				.font(.system(size: 18, weight: .regular))
@@ -33,9 +33,9 @@ struct TransactionDetailsView: View {
 
 	private var descriptionInfo: some View {
 		VStack(alignment: .leading, spacing: 8) {
-			Text("Description:")
+			Text(AppStrings.TransactionDetails.description)
 				.font(.system(size: 12, weight: .light))
-			Text(transaction.description ?? "-")
+			Text(transaction.description ?? AppStrings.TransactionDetails.noDescription)
 				.font(.system(size: 18, weight: .thin))
 		}
 	}

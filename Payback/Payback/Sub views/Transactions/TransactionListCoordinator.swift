@@ -23,7 +23,7 @@ final class TransactionListCoordinator: ObservableObject {
 		TransactionDetailsView(transaction: transaction)
 			.modifier(
 				NavigationBarModifier(
-					title: "Transaction details",
+					title: AppStrings.TransactionDetails.title,
 					titleColor: .appWhite,
 					backgroundColor: .appPrimary
 				)

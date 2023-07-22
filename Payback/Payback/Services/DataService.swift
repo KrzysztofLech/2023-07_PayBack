@@ -15,11 +15,11 @@ enum DataServiceError: Error {
 	var title: String {
 		switch self {
 		case .noInternet:
-			return "No Internet!"
+			return AppStrings.Alerts.noInternet
 		case .decodingError:
-			return "Decoding problem!"
+			return AppStrings.Alerts.decodingProblem
 		case .random:
-			return "Demo RANDOM error!\nTry again"
+			return AppStrings.Alerts.demo
 		default:
 			return self.localizedDescription
 		}

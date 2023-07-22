@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B0586402A6BB5A1008336BE /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B05863F2A6BB5A1008336BE /* Strings.swift */; };
 		6B3B8A052A693B92004BFF5B /* TransactionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3B8A042A693B92004BFF5B /* TransactionDetailsView.swift */; };
 		6B3B8A072A6949D8004BFF5B /* TransactionListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3B8A062A6949D8004BFF5B /* TransactionListCoordinator.swift */; };
 		6B3B8A092A6A5FBD004BFF5B /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3B8A082A6A5FBD004BFF5B /* FilterView.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B05863F2A6BB5A1008336BE /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		6B3B8A042A693B92004BFF5B /* TransactionDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsView.swift; sourceTree = "<group>"; };
 		6B3B8A062A6949D8004BFF5B /* TransactionListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListCoordinator.swift; sourceTree = "<group>"; };
 		6B3B8A082A6A5FBD004BFF5B /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				6BF07DDB2A67CB1A000ECCAE /* Assets.xcassets */,
 				6BF07E1D2A67F551000ECCAE /* Colors.xcassets */,
+				6B05863F2A6BB5A1008336BE /* Strings.swift */,
 				6BF07E1F2A6819D1000ECCAE /* PBTransactions.json */,
 			);
 			path = Resources;
@@ -346,6 +349,7 @@
 				6BF07E192A67D1ED000ECCAE /* TransactionListView.swift in Sources */,
 				6BF07E0C2A67D181000ECCAE /* MainView.swift in Sources */,
 				6BF07DEE2A67CF21000ECCAE /* View+extensions.swift in Sources */,
+				6B0586402A6BB5A1008336BE /* Strings.swift in Sources */,
 				6BF07E032A67D10F000ECCAE /* RootCoordinator.swift in Sources */,
 				6BF07DF92A67CF8F000ECCAE /* LoaderView.swift in Sources */,
 				6BF07DFC2A67CFEF000ECCAE /* DataService.swift in Sources */,
