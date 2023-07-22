@@ -50,6 +50,7 @@ final class RootCoordinator: ObservableObject {
 			.store(in: &cancellables)
 
 		dataService.errorPublisher
+			.receive(on: RunLoop.main)
 			.sink { error in
 				if let error {
 					self.fullScreenItem = .alert(error.title)
@@ -58,6 +59,7 @@ final class RootCoordinator: ObservableObject {
 			.store(in: &cancellables)
 
 		dataService.isConnectedPublisher
+			.receive(on: RunLoop.main)
 			.sink { isConnected in
 				if !isConnected {
 					self.fullScreenItem = .alert(AppStrings.Alerts.noInternet)
