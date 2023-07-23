@@ -23,6 +23,9 @@ struct AlertView: View {
 		.onAppear(delay: 2) {
 			didFinishAction?()
 		}
+		.onTapGesture {
+			didFinishAction?()
+		}
     }
 }
 

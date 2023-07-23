@@ -11,6 +11,11 @@ enum DataServiceError: Error {
 	case decodingError
 	case noInternet
 	case random
+	case other(Error)
+
+	static func map(_ error: Error) -> DataServiceError {
+		return (error as? DataServiceError) ?? .other(error)
+	}
 
 	var title: String {
 		switch self {
@@ -37,6 +42,7 @@ protocol DataServiceProtocol {
 	var isConnectedPublisher: Published<Bool>.Publisher { get }
 
 	func getDataFromDemoFile(completion: @escaping (Transactions) -> Void)
+	func getDataFromDemoFile() -> AnyPublisher<Transactions, DataServiceError>
 }
 
 final class DataService: DataServiceProtocol {
@@ -78,6 +84,7 @@ final class DataService: DataServiceProtocol {
 
 	// MARK: - Data requests
 
+	// Callback version
 	func getDataFromDemoFile(completion: @escaping (Transactions) -> Void) {
 		guard isConnected else {
 			error = .noInternet
@@ -108,9 +115,54 @@ final class DataService: DataServiceProtocol {
 			return
 		}
 
-		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 			self.isInProgress = false
 			completion(transactions)
 		}
+	}
+
+	// Combine version
+	func getDataFromDemoFile() -> AnyPublisher<Transactions, DataServiceError> {
+		let path = Bundle.main.path(forResource: "PBTransactions", ofType: "json")!
+		let url = URL(fileURLWithPath: path)
+
+		let decoder = JSONDecoder()
+		decoder.dateDecodingStrategy = .iso8601
+
+		isInProgress = true
+
+		return $isConnected
+			.tryMap { isConnected in
+				if isConnected {
+					return true
+				} else {
+					throw DataServiceError.noInternet
+				}
+			}
+			.tryMap { _ in
+				if Bool.random() {
+					throw DataServiceError.random
+				}
+
+				guard let data = try? Data(contentsOf: url) else {
+					throw DataServiceError.noDataReceived
+				}
+
+				return data
+			}
+			.delay(for: 2, scheduler: RunLoop.main)
+			.tryMap { data in
+				self.isInProgress = false
+
+				guard let transactions = try? decoder.decode(Transactions.self, from: data) else {
+					throw DataServiceError.decodingError
+				}
+				return transactions
+			}
+			.mapError { error in
+				self.error = DataServiceError.map(error)
+				return DataServiceError.map(error)
+			}
+			.eraseToAnyPublisher()
 	}
 }

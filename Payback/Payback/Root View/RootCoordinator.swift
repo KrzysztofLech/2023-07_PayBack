@@ -44,6 +44,7 @@ final class RootCoordinator: ObservableObject {
 
 	private func connectWithDataService() {
 		dataService.isInProgressPublisher
+			.receive(on: RunLoop.main)
 			.sink { isInProgress in
 				self.fullScreenItem = isInProgress ? .loader : nil
 			}
